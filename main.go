@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"time"
+	"strings"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
@@ -94,6 +95,7 @@ func main() {
 		Handler: router,
 		ReadHeaderTimeout: 5 * time.Second, // 5 seconds timeout for reading request headers
 	}
+
 	safePort := strings.ReplaceAll(port, "\n", "")
 	safePort = strings.ReplaceAll(safePort, "\r", "")
 	log.Printf("Serving on port: %s\n", safePort)
